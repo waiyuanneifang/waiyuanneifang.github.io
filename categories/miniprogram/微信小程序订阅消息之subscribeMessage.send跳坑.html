@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>微信小程序订阅消息之 subscribeMessage.send | 外圆内方</title>
+    <meta name="description" content="外圆内方的个人博客">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/styles.ae18e89e.css" as="style"><link rel="preload" href="/assets/js/app.ae18e89e.js" as="script"><link rel="preload" href="/assets/js/22.4f99f907.js" as="script"><link rel="prefetch" href="/assets/css/1.styles.b35cbff0.css"><link rel="prefetch" href="/assets/css/2.styles.b68868a6.css"><link rel="prefetch" href="/assets/css/6.styles.03d8ff4b.css"><link rel="prefetch" href="/assets/js/10.95b0d78f.js"><link rel="prefetch" href="/assets/js/11.4407928c.js"><link rel="prefetch" href="/assets/js/12.467bdbb7.js"><link rel="prefetch" href="/assets/js/13.e1637db2.js"><link rel="prefetch" href="/assets/js/14.49e8113f.js"><link rel="prefetch" href="/assets/js/15.f4c27864.js"><link rel="prefetch" href="/assets/js/16.f7050cd0.js"><link rel="prefetch" href="/assets/js/17.1b0dd833.js"><link rel="prefetch" href="/assets/js/18.8ff4db5d.js"><link rel="prefetch" href="/assets/js/19.0bf5d35c.js"><link rel="prefetch" href="/assets/js/2.b68868a6.js"><link rel="prefetch" href="/assets/js/20.c2a56d9e.js"><link rel="prefetch" href="/assets/js/21.235dff30.js"><link rel="prefetch" href="/assets/js/23.82c23d9d.js"><link rel="prefetch" href="/assets/js/24.618d03c1.js"><link rel="prefetch" href="/assets/js/25.ca8c1861.js"><link rel="prefetch" href="/assets/js/26.3054c15b.js"><link rel="prefetch" href="/assets/js/3.2b8bc152.js"><link rel="prefetch" href="/assets/js/4.738079c0.js"><link rel="prefetch" href="/assets/js/5.11283fb1.js"><link rel="prefetch" href="/assets/js/6.03d8ff4b.js"><link rel="prefetch" href="/assets/js/7.d7e95561.js"><link rel="prefetch" href="/assets/js/8.5a50e622.js"><link rel="prefetch" href="/assets/js/9.426f3ec9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.b35cbff0.js">
+    <link rel="stylesheet" href="/assets/css/styles.ae18e89e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><i class="iconfont icon-menu"></i></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">外圆内方</span></a> <div class="links" style="max-width:nullpx;"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav>  <!----> </div> <div class="page" data-v-a29357e4> <div class="page-title" data-v-a29357e4><h1 data-v-a29357e4>微信小程序订阅消息之 subscribeMessage.send</h1> <hr data-v-a29357e4> <div data-v-386fc0cc data-v-a29357e4><i class="iconfont icon-user" data-v-386fc0cc><span data-v-386fc0cc>外圆内方</span></i> <i class="iconfont icon-time-circle" data-v-386fc0cc><span data-v-386fc0cc>2019-12-12</span></i> <span id="/categories/miniprogram/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%AE%A2%E9%98%85%E6%B6%88%E6%81%AF%E4%B9%8BsubscribeMessage.send%E8%B7%B3%E5%9D%91.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3637c066 data-v-386fc0cc><i class="iconfont icon-eye" style="margin-right: .5rem" data-v-3637c066></i> <a class="leancloud-visitors-count" style="font-size:.8rem;font-weight:normal;color:#999;" data-v-3637c066></a></span> <i class="iconfont icon-tag tags" data-v-386fc0cc><span class="tag-item" data-v-386fc0cc>
+			小程序
+		</span><span class="tag-item" data-v-386fc0cc>
+			云开发
+		</span></i></div></div> <div class="content" data-v-a29357e4><div class="tip custom-block"><p class="custom-block-title">微信官方：小程序模板消息接口将于 2020 年 1 月 10 日下线，开发者可使用订阅消息功能</p> <ol><li><p>原来的 templateMessage.send 要替换为 subscribeMessage.send</p></li> <li><p>云调用 subscribeMessage.send 要在 config.json 中配置 subscribeMessage.send API 的权限，并且上传云函数。</p></li> <li><p>subscribeMessage.send 调用前必须先调用 wx.requestSubscribeMessage 请求用户同意订阅消息成功后才能顺利执行。</p></li> <li><p>templateMessage.send 必须的参数中 formId 在 subscribeMessage.send 已经不需要了， 并且 wx.requestSubscribeMessage 成功的执行只有两个场景。分别是：一、用户点击行为。 二、发起支付回调后。（<strong>注：一定要注意用户点击是直接触发的，promise 和 await 后都会导致不执行</strong>）</p></li></ol></div> <p>不多说直接上代码</p> <p>微信端：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">onSend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">requestSubscribeMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        tmplIds<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'微信小程序后台配置的订阅消息模板id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 成功的回调</span>
+        <span class="token function-variable function">success</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 调用后台，这里用的是云开发</span>
+            wx<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span><span class="token function">callFunction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              name<span class="token punctuation">:</span> <span class="token string">'sendMessage'</span><span class="token punctuation">,</span>
+              data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+</code></pre></div><p>云函数：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> cloud <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;wx-server-sdk&quot;</span><span class="token punctuation">)</span>
+cloud<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+exports<span class="token punctuation">.</span><span class="token function-variable function">main</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> context</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> getWXContext <span class="token operator">=</span> cloud<span class="token punctuation">.</span><span class="token function">getWXContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">try</span> <span class="token punctuation">{</span>
+		<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> cloud<span class="token punctuation">.</span>openapi<span class="token punctuation">.</span>subscribeMessage<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+			touser<span class="token punctuation">:</span> getWXContext<span class="token punctuation">.</span><span class="token constant">OPENID</span><span class="token punctuation">,</span>
+			<span class="token comment">// 同样是模板的id，但是不同于微信端 requestSubscribeMessage 的是数组，这里只能填一个string</span>
+			templateId<span class="token punctuation">:</span> <span class="token string">&quot;微信小程序后台配置的订阅消息模板id&quot;</span><span class="token punctuation">,</span>
+			<span class="token comment">// 推送到的消息跳转小程序的页面</span>
+			page<span class="token punctuation">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">index</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+			<span class="token comment">// 生成模板中的参数</span>
+			data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				<span class="token comment">// 这里的 key1, key2 必须按订阅的消息模板中详细内容的返回字段写</span>
+				key1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+					value<span class="token punctuation">:</span> event<span class="token punctuation">.</span>createTime
+				<span class="token punctuation">}</span><span class="token punctuation">,</span>
+				key2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+					value<span class="token punctuation">:</span> event<span class="token punctuation">.</span>content
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> result
+	<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+		<span class="token keyword">return</span> err
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <!----> <div class="page-edit" data-v-a29357e4><!----></div> <!----> </div> <div class="valine-wrapper" data-v-9d6ad040><div id="valine" style="display:;" data-v-9d6ad040></div></div> <!----> <!----> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-01105093 data-v-01105093><i class="iconfont icon-arrowup" data-v-01105093></i></div></div></div>
+    <script src="/assets/js/app.ae18e89e.js" defer></script><script src="/assets/js/22.4f99f907.js" defer></script>
+  </body>
+</html>

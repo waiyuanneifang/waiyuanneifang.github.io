@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack+mock Server 与后端并行开发 | 外圆内方</title>
+    <meta name="description" content="外圆内方的个人博客">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/styles.ae18e89e.css" as="style"><link rel="preload" href="/assets/js/app.ae18e89e.js" as="script"><link rel="preload" href="/assets/js/18.8ff4db5d.js" as="script"><link rel="prefetch" href="/assets/css/1.styles.b35cbff0.css"><link rel="prefetch" href="/assets/css/2.styles.b68868a6.css"><link rel="prefetch" href="/assets/css/6.styles.03d8ff4b.css"><link rel="prefetch" href="/assets/js/10.95b0d78f.js"><link rel="prefetch" href="/assets/js/11.4407928c.js"><link rel="prefetch" href="/assets/js/12.467bdbb7.js"><link rel="prefetch" href="/assets/js/13.e1637db2.js"><link rel="prefetch" href="/assets/js/14.49e8113f.js"><link rel="prefetch" href="/assets/js/15.f4c27864.js"><link rel="prefetch" href="/assets/js/16.f7050cd0.js"><link rel="prefetch" href="/assets/js/17.1b0dd833.js"><link rel="prefetch" href="/assets/js/19.0bf5d35c.js"><link rel="prefetch" href="/assets/js/2.b68868a6.js"><link rel="prefetch" href="/assets/js/20.c2a56d9e.js"><link rel="prefetch" href="/assets/js/21.235dff30.js"><link rel="prefetch" href="/assets/js/22.4f99f907.js"><link rel="prefetch" href="/assets/js/23.82c23d9d.js"><link rel="prefetch" href="/assets/js/24.618d03c1.js"><link rel="prefetch" href="/assets/js/25.ca8c1861.js"><link rel="prefetch" href="/assets/js/26.3054c15b.js"><link rel="prefetch" href="/assets/js/3.2b8bc152.js"><link rel="prefetch" href="/assets/js/4.738079c0.js"><link rel="prefetch" href="/assets/js/5.11283fb1.js"><link rel="prefetch" href="/assets/js/6.03d8ff4b.js"><link rel="prefetch" href="/assets/js/7.d7e95561.js"><link rel="prefetch" href="/assets/js/8.5a50e622.js"><link rel="prefetch" href="/assets/js/9.426f3ec9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.b35cbff0.js">
+    <link rel="stylesheet" href="/assets/css/styles.ae18e89e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><i class="iconfont icon-menu"></i></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">外圆内方</span></a> <div class="links" style="max-width:nullpx;"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav>  <!----> </div> <div class="page" data-v-a29357e4> <div class="page-title" data-v-a29357e4><h1 data-v-a29357e4>webpack+mock Server 与后端并行开发</h1> <hr data-v-a29357e4> <div data-v-386fc0cc data-v-a29357e4><i class="iconfont icon-user" data-v-386fc0cc><span data-v-386fc0cc>外圆内方</span></i> <i class="iconfont icon-time-circle" data-v-386fc0cc><span data-v-386fc0cc>2019-2-26</span></i> <span id="/categories/Webpack/webpack%2Bmock%20Server%20%E4%B8%8E%E5%90%8E%E7%AB%AF%E5%B9%B6%E8%A1%8C%E5%BC%80%E5%8F%91.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3637c066 data-v-386fc0cc><i class="iconfont icon-eye" style="margin-right: .5rem" data-v-3637c066></i> <a class="leancloud-visitors-count" style="font-size:.8rem;font-weight:normal;color:#999;" data-v-3637c066></a></span> <i class="iconfont icon-tag tags" data-v-386fc0cc><span class="tag-item" data-v-386fc0cc>
+			Webpack
+		</span><span class="tag-item" data-v-386fc0cc>
+			Mock
+		</span></i></div></div> <div class="content" data-v-a29357e4><div class="tip custom-block"><p class="custom-block-title">使用 mock 开发的优点</p> <ol><li>不依赖后端进度。只要根据需求与后端列出接口，约定好接口内容就能开发。</li> <li>职责分明。随着前端的发展，业务逻辑部分也开始放在客户端。这就不可避免的可能会与后端同学产生冲突，在约定接口内容后有利于提前化解这样的问题，避免撕 X。提高工作效率。</li> <li>独立运行。即使没有后台服务也能打开项目。避免以后想看项目，启动都是报错的问题。</li></ol></div> <p>使用 Express 来实现 Mock Server</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 引入node的path</span>
+<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;path&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 引入node的文件模块</span>
+<span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;fs&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 引入mockJs</span>
+<span class="token keyword">var</span> mock <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;mockjs&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 构建express应用</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;express&quot;</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">/* process.argv返回一个数组，其中包含当启动 Node.js 进程时传入的命令行参数。
+    第一个元素是 node.exe 执行文件的路径
+    第二个元素将是正在执行的 JavaScript 文件的路径（这个是配置在npm script 中的mockServer.js的路径）
+    第三个是npm script 里面配置的mockServer的端口号
+*/</span>
+<span class="token keyword">var</span> port <span class="token operator">=</span> process<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token number">8000</span>
+
+<span class="token comment">// 监听启动端口</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">&quot;Mock server is listening at &quot;</span> <span class="token operator">+</span> port<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// webpackServer是否开启代理</span>
+<span class="token keyword">const</span> prefix <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!=</span> <span class="token string">&quot;production&quot;</span> <span class="token operator">?</span> <span class="token string">&quot;/api&quot;</span> <span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>
+
+<span class="token comment">// 获取同一文件夹下的api.json</span>
+<span class="token keyword">var</span> apiPath <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">&quot;./api.json&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 读取api.json里面的接口内容</span>
+<span class="token keyword">var</span> api <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">getApis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>apiPath<span class="token punctuation">,</span> <span class="token string">&quot;utf-8&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		api <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 监听api.json变化</span>
+fs<span class="token punctuation">.</span><span class="token function">watchFile</span><span class="token punctuation">(</span>apiPath<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">curr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">getApis</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token function">getApis</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 支持callback</span>
+app<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;jsonp callback name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;callback&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 使用中间件对获取的api.json内容进行处理返回</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> data
+	<span class="token keyword">var</span> delay <span class="token operator">=</span> <span class="token number">0</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> group <span class="token keyword">in</span> api<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>
+			api<span class="token punctuation">[</span>group<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">reqData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>reqData<span class="token punctuation">.</span>regexp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>reqData<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>originalUrl<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">return</span> <span class="token boolean">false</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>originalUrl <span class="token operator">!==</span> prefix <span class="token operator">+</span> reqData<span class="token punctuation">.</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">return</span> <span class="token boolean">false</span>
+				<span class="token punctuation">}</span>
+				<span class="token keyword">var</span> apiRes <span class="token operator">=</span> reqData<span class="token punctuation">.</span>res
+				data <span class="token operator">=</span> reqData<span class="token punctuation">.</span>mock <span class="token operator">!==</span> <span class="token boolean">false</span> <span class="token operator">?</span> mock<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span>apiRes<span class="token punctuation">)</span> <span class="token punctuation">:</span> apiRes
+				delay <span class="token operator">=</span> reqData<span class="token punctuation">.</span>delay <span class="token operator">||</span> <span class="token number">0</span>
+				<span class="token keyword">return</span> <span class="token boolean">true</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">undefined</span>
+		<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">break</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">// CORS 跨域</span>
+	res<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Allow-Origin&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;*&quot;</span><span class="token punctuation">)</span>
+	res<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">&quot;Access-Control-Allow-Methods&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;POST, GET, PUT, DELETE, OPTIONS&quot;</span><span class="token punctuation">)</span>
+	res<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>
+		<span class="token string">&quot;Access-Control-Allow-Headers&quot;</span><span class="token punctuation">,</span>
+		<span class="token string">&quot;Origin, X-Requested-With, Content-Type, Accept, Authorization&quot;</span>
+	<span class="token punctuation">)</span>
+	<span class="token comment">// 返回处理过的数据</span>
+	data <span class="token operator">!==</span> <span class="token keyword">undefined</span>
+		<span class="token operator">?</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> res<span class="token punctuation">.</span><span class="token function">jsonp</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> delay<span class="token punctuation">)</span>
+		<span class="token punctuation">:</span> res<span class="token punctuation">.</span><span class="token function">sendStatus</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>在 api.json 写入 mock:</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+	<span class="token property">&quot;登录模块&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/portal/login&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;desc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;用户登入&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;mock&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;res&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+				<span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;success&quot;</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+					<span class="token property">&quot;uname&quot;</span><span class="token operator">:</span> <span class="token string">&quot;@cword(5,8)&quot;</span><span class="token punctuation">,</span>
+					<span class="token property">&quot;uid&quot;</span><span class="token operator">:</span> <span class="token number">9</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/portal/updatePwd&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;desc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;修改密码&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;mock&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;res&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+				<span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;success&quot;</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+					<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;修改成功&quot;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/portal/captchaImage&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;desc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;验证码&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;mock&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;res&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+				<span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;success&quot;</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">&quot;url&quot;</span><span class="token operator">:</span> <span class="token string">&quot;/portal/logout&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;desc&quot;</span><span class="token operator">:</span> <span class="token string">&quot;用户登出&quot;</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;mock&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+			<span class="token property">&quot;res&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+				<span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;success&quot;</span><span class="token punctuation">,</span>
+				<span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+					<span class="token property">&quot;msg&quot;</span><span class="token operator">:</span> <span class="token string">&quot;登出成功&quot;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>最后在 npm script 上加上 mock server 启动命令：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+	<span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token property">&quot;start&quot;</span><span class="token operator">:</span> <span class="token string">&quot;run-p start_dev mock&quot;</span><span class="token punctuation">,</span>
+		<span class="token comment">// ./src是项目路径</span>
+		<span class="token property">&quot;start_dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;webpack-dev-server --inline --hot --host 0.0.0.0 --progress --port 3000 --colors --content-base ./src&quot;</span><span class="token punctuation">,</span>
+		<span class="token comment">// ./mock-server/server.js是mockServer路径 2618是端口号</span>
+		<span class="token property">&quot;mock&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node ./mock-server/server.js 2618&quot;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>运行 npm run start</p></div> <!----> <div class="page-edit" data-v-a29357e4><!----></div> <!----> </div> <div class="valine-wrapper" data-v-9d6ad040><div id="valine" style="display:;" data-v-9d6ad040></div></div> <!----> <!----> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-01105093 data-v-01105093><i class="iconfont icon-arrowup" data-v-01105093></i></div></div></div>
+    <script src="/assets/js/app.ae18e89e.js" defer></script><script src="/assets/js/18.8ff4db5d.js" defer></script>
+  </body>
+</html>

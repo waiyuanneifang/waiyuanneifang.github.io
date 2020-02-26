@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用picoJs在vue中的实现人脸识别 | 外圆内方</title>
+    <meta name="description" content="外圆内方的个人博客">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/styles.ae18e89e.css" as="style"><link rel="preload" href="/assets/js/app.ae18e89e.js" as="script"><link rel="preload" href="/assets/js/15.f4c27864.js" as="script"><link rel="prefetch" href="/assets/css/1.styles.b35cbff0.css"><link rel="prefetch" href="/assets/css/2.styles.b68868a6.css"><link rel="prefetch" href="/assets/css/6.styles.03d8ff4b.css"><link rel="prefetch" href="/assets/js/10.95b0d78f.js"><link rel="prefetch" href="/assets/js/11.4407928c.js"><link rel="prefetch" href="/assets/js/12.467bdbb7.js"><link rel="prefetch" href="/assets/js/13.e1637db2.js"><link rel="prefetch" href="/assets/js/14.49e8113f.js"><link rel="prefetch" href="/assets/js/16.f7050cd0.js"><link rel="prefetch" href="/assets/js/17.1b0dd833.js"><link rel="prefetch" href="/assets/js/18.8ff4db5d.js"><link rel="prefetch" href="/assets/js/19.0bf5d35c.js"><link rel="prefetch" href="/assets/js/2.b68868a6.js"><link rel="prefetch" href="/assets/js/20.c2a56d9e.js"><link rel="prefetch" href="/assets/js/21.235dff30.js"><link rel="prefetch" href="/assets/js/22.4f99f907.js"><link rel="prefetch" href="/assets/js/23.82c23d9d.js"><link rel="prefetch" href="/assets/js/24.618d03c1.js"><link rel="prefetch" href="/assets/js/25.ca8c1861.js"><link rel="prefetch" href="/assets/js/26.3054c15b.js"><link rel="prefetch" href="/assets/js/3.2b8bc152.js"><link rel="prefetch" href="/assets/js/4.738079c0.js"><link rel="prefetch" href="/assets/js/5.11283fb1.js"><link rel="prefetch" href="/assets/js/6.03d8ff4b.js"><link rel="prefetch" href="/assets/js/7.d7e95561.js"><link rel="prefetch" href="/assets/js/8.5a50e622.js"><link rel="prefetch" href="/assets/js/9.426f3ec9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.b35cbff0.js">
+    <link rel="stylesheet" href="/assets/css/styles.ae18e89e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><i class="iconfont icon-menu"></i></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">外圆内方</span></a> <div class="links" style="max-width:nullpx;"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav>  <!----> </div> <div class="page" data-v-a29357e4> <div class="page-title" data-v-a29357e4><h1 data-v-a29357e4>使用picoJs在vue中的实现人脸识别</h1> <hr data-v-a29357e4> <div data-v-386fc0cc data-v-a29357e4><i class="iconfont icon-user" data-v-386fc0cc><span data-v-386fc0cc>外圆内方</span></i> <i class="iconfont icon-time-circle" data-v-386fc0cc><span data-v-386fc0cc>2019-8-1</span></i> <span id="/categories/Vue/%E4%BD%BF%E7%94%A8picoJs%E5%9C%A8vue%E4%B8%AD%E7%9A%84%E5%AE%9E%E7%8E%B0%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3637c066 data-v-386fc0cc><i class="iconfont icon-eye" style="margin-right: .5rem" data-v-3637c066></i> <a class="leancloud-visitors-count" style="font-size:.8rem;font-weight:normal;color:#999;" data-v-3637c066></a></span> <i class="iconfont icon-tag tags" data-v-386fc0cc><span class="tag-item" data-v-386fc0cc>
+			Vue
+		</span><span class="tag-item" data-v-386fc0cc>
+			picoJs
+		</span><span class="tag-item" data-v-386fc0cc>
+			人脸识别
+		</span></i></div></div> <div class="content" data-v-a29357e4><div class="tip custom-block"><p class="custom-block-title">注</p> <p><strong>需求初衷</strong>: 在一个餐饮项目中，有一个需求是员工吃饭需要自动扫脸识别出员工信息，员工点菜确认后出菜。并记录员工用餐信息。</p> <p><strong>注意问题</strong>: 在 chrome 46 之后，getUserMedia 只能在 localhost，https 中使用。解决方法有三种</p> <ol><li>使用 chrome 46 之前的浏览器</li> <li>使用 https</li> <li>给浏览器设置 unsafely-treat-insecure-origin-as-secure, 具体方法打开 chrome 在地址栏填入 chrome://flags 回车进入后查询 unsafely-treat-insecure-origin-as-secure，查询到后设置为 Enadled 并在方框中填写访问的地址重启。</li></ol></div> <ol><li>在 vue 文件中</li></ol> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>video<span class="token punctuation">&quot;</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">=&quot;</span><span class="token attr-value"><span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span><span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>canvas<span class="token punctuation">&quot;</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>320<span class="token punctuation">&quot;</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>240<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> video <span class="token keyword">from</span> <span class="token string">&quot;SRC/minixs/video.js&quot;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+	mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>video<span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initCamera</span><span class="token punctuation">(</span>&quot;submitFacePic“<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// fd是包含提取面部的formData</span>
+        <span class="token function">submitFacePic</span><span class="token punctuation">(</span><span class="token parameter">fd</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> pico <span class="token keyword">from</span> <span class="token string">&quot;./pico.js&quot;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+	<span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token punctuation">{</span>
+			<span class="token comment">// 存储画布实例</span>
+			camvas<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+			<span class="token comment">// 拍照开关</span>
+			photographic<span class="token punctuation">:</span> <span class="token boolean">true</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		<span class="token comment">// 初始化面部识别</span>
+		<span class="token function">initCamera</span><span class="token punctuation">(</span><span class="token parameter">funName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">var</span> _this <span class="token operator">=</span> <span class="token keyword">this</span>
+			<span class="token comment">// 使用最后5帧的检测</span>
+			<span class="token keyword">var</span> updateMemory <span class="token operator">=</span> pico<span class="token punctuation">.</span><span class="token function">instantiate_detection_memory</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+			<span class="token keyword">var</span> <span class="token function-variable function">facefinderClassifyRegion</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">r<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> pixels<span class="token punctuation">,</span> ldim</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1.0</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">// 获取facefinder用于处理面部的算法二进制文件</span>
+			<span class="token keyword">var</span> cascadeurl <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">./facefinder</span><span class="token template-punctuation string">`</span></span>
+			<span class="token function">fetch</span><span class="token punctuation">(</span>cascadeurl<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				response<span class="token punctuation">.</span><span class="token function">arrayBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">buffer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">var</span> bytes <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Int8Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span>
+					facefinderClassifyRegion <span class="token operator">=</span> pico<span class="token punctuation">.</span><span class="token function">unpack_cascade</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span><span class="token punctuation">)</span>
+			<span class="token punctuation">}</span><span class="token punctuation">)</span>
+			<span class="token comment">// 在画布上获取绘图上下文并定义一个函数将RGBA图像转换为灰度</span>
+			<span class="token keyword">var</span> ctx <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;canvas&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">&quot;2d&quot;</span><span class="token punctuation">)</span>
+			<span class="token keyword">function</span> <span class="token function">rgbaToGrayscale</span><span class="token punctuation">(</span><span class="token parameter">rgba<span class="token punctuation">,</span> nrows<span class="token punctuation">,</span> ncols</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">var</span> gray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>nrows <span class="token operator">*</span> ncols<span class="token punctuation">)</span>
+				<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> r <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> r <span class="token operator">&lt;</span> nrows<span class="token punctuation">;</span> <span class="token operator">++</span>r<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token keyword">for</span> <span class="token punctuation">(</span>
+						<span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+						c <span class="token operator">&lt;</span> ncols<span class="token punctuation">;</span>
+						<span class="token operator">++</span>c <span class="token comment">// gray = 0.2*red + 0.7*green + 0.1*blue</span>
+					<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						gray<span class="token punctuation">[</span>r <span class="token operator">*</span> ncols <span class="token operator">+</span> c<span class="token punctuation">]</span> <span class="token operator">=</span>
+							<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> rgba<span class="token punctuation">[</span>r <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">*</span> ncols <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> c <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span>
+								<span class="token number">7</span> <span class="token operator">*</span> rgba<span class="token punctuation">[</span>r <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">*</span> ncols <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span>
+								<span class="token number">1</span> <span class="token operator">*</span> rgba<span class="token punctuation">[</span>r <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">*</span> ncols <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> c <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span>
+							<span class="token number">10</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+				<span class="token keyword">return</span> gray
+			<span class="token punctuation">}</span>
+			<span class="token comment">// 每当视频帧可用时调用该函数</span>
+			<span class="token keyword">var</span> <span class="token function-variable function">processfn</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">video<span class="token punctuation">,</span> dt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token comment">// 将视频帧渲染到canvas元素并提取RGBA像素数据</span>
+				ctx<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>video<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">320</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">)</span>
+				<span class="token keyword">var</span> rgba <span class="token operator">=</span> ctx<span class="token punctuation">.</span><span class="token function">getImageData</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">320</span><span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data
+				<span class="token keyword">const</span> image <span class="token operator">=</span> <span class="token punctuation">{</span>
+					pixels<span class="token punctuation">:</span> <span class="token function">rgbaToGrayscale</span><span class="token punctuation">(</span>rgba<span class="token punctuation">,</span> <span class="token number">240</span><span class="token punctuation">,</span> <span class="token number">320</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+					nrows<span class="token punctuation">:</span> <span class="token number">240</span><span class="token punctuation">,</span>
+					ncols<span class="token punctuation">:</span> <span class="token number">320</span><span class="token punctuation">,</span>
+					ldim<span class="token punctuation">:</span> <span class="token number">320</span>
+				<span class="token punctuation">}</span>
+				<span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token punctuation">{</span>
+					shiftfactor<span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token comment">//将检测窗口移动其大小的10％</span>
+					minsize<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token comment">//脸的最小尺寸</span>
+					maxsize<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token comment">//脸的最大尺寸</span>
+					scalefactor<span class="token punctuation">:</span> <span class="token number">1.1</span> <span class="token comment">//用于多尺度处理：当移动到更高比例时，将检测窗口的大小调整10％</span>
+				<span class="token punctuation">}</span>
+				<span class="token comment">// 在帧上运行级联并对获得的检测进行聚类</span>
+				<span class="token comment">// dets是一个包含（r，c，s，q）四元组的数组</span>
+				<span class="token comment">//（表示行，列，比例和检测分数）</span>
+				<span class="token keyword">let</span> dets <span class="token operator">=</span> pico<span class="token punctuation">.</span><span class="token function">run_cascade</span><span class="token punctuation">(</span>
+					image<span class="token punctuation">,</span>
+					facefinderClassifyRegion<span class="token punctuation">,</span>
+					params
+				<span class="token punctuation">)</span>
+				dets <span class="token operator">=</span> <span class="token function">updateMemory</span><span class="token punctuation">(</span>dets<span class="token punctuation">)</span>
+				dets <span class="token operator">=</span> pico<span class="token punctuation">.</span><span class="token function">cluster_detections</span><span class="token punctuation">(</span>dets<span class="token punctuation">,</span> <span class="token number">0.2</span><span class="token punctuation">)</span>
+				<span class="token comment">// 绘制检测</span>
+				<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> dets<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token comment">// 检查检测分数 //如果它高于阈值，则绘制它 //（常数50.0是经验的：其他级联可能需要不同的级联）</span>
+					<span class="token keyword">if</span> <span class="token punctuation">(</span>dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span> <span class="token number">50.0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token comment">// 截取到人脸在video中的参数</span>
+						<span class="token comment">// 左上角x坐标</span>
+						<span class="token keyword">const</span> x <span class="token operator">=</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2</span>
+						<span class="token comment">// 左上角y坐标</span>
+						<span class="token keyword">const</span> y <span class="token operator">=</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">/</span> <span class="token number">2</span>
+						<span class="token comment">// 长</span>
+						<span class="token keyword">const</span> xWidth <span class="token operator">=</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1.2</span>
+						<span class="token comment">// 高</span>
+						<span class="token keyword">const</span> yWidth <span class="token operator">=</span> dets<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">0.9</span>
+						<span class="token comment">// 绘制红色方框</span>
+						ctx<span class="token punctuation">.</span><span class="token function">beginPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+						ctx<span class="token punctuation">.</span><span class="token function">rect</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> xWidth<span class="token punctuation">,</span> yWidth<span class="token punctuation">)</span>
+						ctx<span class="token punctuation">.</span>lineWidth <span class="token operator">=</span> <span class="token number">3</span>
+						ctx<span class="token punctuation">.</span>strokeStyle <span class="token operator">=</span> <span class="token string">&quot;red&quot;</span>
+						ctx<span class="token punctuation">.</span><span class="token function">stroke</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+						<span class="token comment">// 如果允许拍照，则拍照生成image，append到formData并返回</span>
+						<span class="token keyword">if</span> <span class="token punctuation">(</span>_this<span class="token punctuation">.</span>photographic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+							_this<span class="token punctuation">.</span>photographic <span class="token operator">=</span> <span class="token boolean">false</span>
+							<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+								<span class="token keyword">const</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&quot;canvas&quot;</span><span class="token punctuation">)</span>
+								canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">640</span>
+								canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">480</span>
+								canvas
+									<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">&quot;2d&quot;</span><span class="token punctuation">)</span>
+									<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>
+										document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;video&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+										x <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+										y <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+										xWidth <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+										yWidth <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+										<span class="token number">0</span><span class="token punctuation">,</span>
+										<span class="token number">0</span><span class="token punctuation">,</span>
+										<span class="token number">640</span><span class="token punctuation">,</span>
+										<span class="token number">480</span>
+									<span class="token punctuation">)</span>
+								canvas<span class="token punctuation">.</span><span class="token function">toBlob</span><span class="token punctuation">(</span>
+									<span class="token parameter">blob</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+										<span class="token keyword">var</span> fd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+										fd<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;file&quot;</span><span class="token punctuation">,</span> blob<span class="token punctuation">,</span> <span class="token string">&quot;face.png&quot;</span><span class="token punctuation">)</span>
+										_this<span class="token punctuation">[</span>funName<span class="token punctuation">]</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span>
+									<span class="token punctuation">}</span><span class="token punctuation">,</span>
+									<span class="token string">&quot;image/png&quot;</span><span class="token punctuation">,</span>
+									<span class="token number">1</span>
+								<span class="token punctuation">)</span>
+							<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
+						<span class="token punctuation">}</span>
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			<span class="token comment">// 实例化摄像机处理（参见https://github.com/cbrandolino/camvas）</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>camvas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">this<span class="token punctuation">.</span>Camvas</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> processfn<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token comment">// 初始化画布</span>
+		<span class="token function">Camvas</span><span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>ctx <span class="token operator">=</span> ctx
+			<span class="token keyword">this</span><span class="token punctuation">.</span>callback <span class="token operator">=</span> callback
+
+			<span class="token keyword">this</span><span class="token punctuation">.</span>video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;video&quot;</span><span class="token punctuation">)</span>
+			<span class="token comment">//如果我们不这样做，则不播放流。</span>
+			<span class="token comment">//顺便说一句，播放和暂停控件照常工作</span>
+			<span class="token comment">//用于流式视频。</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;autoplay&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;playsinline&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">)</span> <span class="token comment">//对iPhone很重要</span>
+
+			<span class="token comment">//当我们开始流式传输视频时，会发生回调。</span>
+			navigator<span class="token punctuation">.</span>mediaDevices
+				<span class="token punctuation">.</span><span class="token function">getUserMedia</span><span class="token punctuation">(</span><span class="token punctuation">{</span> video<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> audio<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+				<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+					<span class="token parameter">stream</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+						<span class="token comment">//是的，现在我们的网络摄像头输入被视为普通视频和</span>
+						<span class="token comment">//我们可以开始玩得开心</span>
+						<span class="token keyword">this</span><span class="token punctuation">.</span>video<span class="token punctuation">.</span>srcObject <span class="token operator">=</span> stream
+						<span class="token comment">//让我们开始画画布</span>
+						<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+					<span class="token punctuation">}</span><span class="token punctuation">,</span>
+					<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+						<span class="token keyword">throw</span> err
+					<span class="token punctuation">}</span>
+				<span class="token punctuation">)</span>
+
+			<span class="token comment">//一旦我们可以在画布上绘制一个新帧，我们就会调用`draw`函数</span>
+			<span class="token comment">//我们作为参数传递</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function-variable function">update</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span>
+				<span class="token keyword">var</span> last <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+				<span class="token keyword">var</span> <span class="token function-variable function">loop</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token comment">// 对于某些效果，您可能想知道传递了多少时间</span>
+					<span class="token comment">// 变量（以毫秒表示）</span>
+					<span class="token keyword">var</span> dt <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> last
+					self<span class="token punctuation">.</span><span class="token function">callback</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>video<span class="token punctuation">,</span> dt<span class="token punctuation">)</span>
+					last <span class="token operator">=</span> Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+					<span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>loop<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span>
+				<span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>loop<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token comment">// 关闭摄像头</span>
+		<span class="token function">closeCamera</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>camvas <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>camvas<span class="token punctuation">.</span>video<span class="token punctuation">.</span>srcObject<span class="token punctuation">.</span><span class="token function">getTracks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>具体的详情参考<a href="https://github.com/tehnokv/picojs" target="_blank" rel="noopener noreferrer">https://github.com/tehnokv/picojs<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <br></div> <!----> <div class="page-edit" data-v-a29357e4><!----></div> <!----> </div> <div class="valine-wrapper" data-v-9d6ad040><div id="valine" style="display:;" data-v-9d6ad040></div></div> <!----> <!----> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-01105093 data-v-01105093><i class="iconfont icon-arrowup" data-v-01105093></i></div></div></div>
+    <script src="/assets/js/app.ae18e89e.js" defer></script><script src="/assets/js/15.f4c27864.js" defer></script>
+  </body>
+</html>

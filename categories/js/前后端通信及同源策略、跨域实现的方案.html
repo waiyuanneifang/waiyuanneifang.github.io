@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前后端通信及同源策略、跨域实现的方案 | 外圆内方</title>
+    <meta name="description" content="外圆内方的个人博客">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/styles.ae18e89e.css" as="style"><link rel="preload" href="/assets/js/app.ae18e89e.js" as="script"><link rel="preload" href="/assets/js/20.c2a56d9e.js" as="script"><link rel="prefetch" href="/assets/css/1.styles.b35cbff0.css"><link rel="prefetch" href="/assets/css/2.styles.b68868a6.css"><link rel="prefetch" href="/assets/css/6.styles.03d8ff4b.css"><link rel="prefetch" href="/assets/js/10.95b0d78f.js"><link rel="prefetch" href="/assets/js/11.4407928c.js"><link rel="prefetch" href="/assets/js/12.467bdbb7.js"><link rel="prefetch" href="/assets/js/13.e1637db2.js"><link rel="prefetch" href="/assets/js/14.49e8113f.js"><link rel="prefetch" href="/assets/js/15.f4c27864.js"><link rel="prefetch" href="/assets/js/16.f7050cd0.js"><link rel="prefetch" href="/assets/js/17.1b0dd833.js"><link rel="prefetch" href="/assets/js/18.8ff4db5d.js"><link rel="prefetch" href="/assets/js/19.0bf5d35c.js"><link rel="prefetch" href="/assets/js/2.b68868a6.js"><link rel="prefetch" href="/assets/js/21.235dff30.js"><link rel="prefetch" href="/assets/js/22.4f99f907.js"><link rel="prefetch" href="/assets/js/23.82c23d9d.js"><link rel="prefetch" href="/assets/js/24.618d03c1.js"><link rel="prefetch" href="/assets/js/25.ca8c1861.js"><link rel="prefetch" href="/assets/js/26.3054c15b.js"><link rel="prefetch" href="/assets/js/3.2b8bc152.js"><link rel="prefetch" href="/assets/js/4.738079c0.js"><link rel="prefetch" href="/assets/js/5.11283fb1.js"><link rel="prefetch" href="/assets/js/6.03d8ff4b.js"><link rel="prefetch" href="/assets/js/7.d7e95561.js"><link rel="prefetch" href="/assets/js/8.5a50e622.js"><link rel="prefetch" href="/assets/js/9.426f3ec9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.b35cbff0.js">
+    <link rel="stylesheet" href="/assets/css/styles.ae18e89e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><i class="iconfont icon-menu"></i></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">外圆内方</span></a> <div class="links" style="max-width:nullpx;"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><div class="side-search-wrapper"><div class="search-box" data-v-8c3ff940><input aria-label="Search" autocomplete="off" spellcheck="false" value="" data-v-8c3ff940> <i class="iconfont icon-search" data-v-8c3ff940></i> <!----></div></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont icon-app-store"></i>
+			分类
+		</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/js/" class="nav-link router-link-active"><i class="iconfont undefined"></i>
+	js
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vue/" class="nav-link"><i class="iconfont undefined"></i>
+	Vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="iconfont undefined"></i>
+	React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tool/" class="nav-link"><i class="iconfont undefined"></i>
+	工具
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Webpack/" class="nav-link"><i class="iconfont undefined"></i>
+	Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/miniprogram/" class="nav-link"><i class="iconfont undefined"></i>
+	小程序
+</a></li><li class="dropdown-item"><!----> <a href="/categories/safe/" class="nav-link"><i class="iconfont undefined"></i>
+	安全
+</a></li></ul></div></div><div class="nav-item"><a href="/heartFeel/" class="nav-link"><i class="iconfont icon-highlight"></i>
+	随笔
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link"><i class="iconfont icon-tags"></i>
+	标签
+</a></div> <!----></nav>  <!----> </div> <div class="page" data-v-a29357e4> <div class="page-title" data-v-a29357e4><h1 data-v-a29357e4>前后端通信及同源策略、跨域实现的方案</h1> <hr data-v-a29357e4> <div data-v-386fc0cc data-v-a29357e4><i class="iconfont icon-user" data-v-386fc0cc><span data-v-386fc0cc>外圆内方</span></i> <i class="iconfont icon-time-circle" data-v-386fc0cc><span data-v-386fc0cc>2019-3-26</span></i> <span id="/categories/js/%E5%89%8D%E5%90%8E%E7%AB%AF%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E3%80%81%E8%B7%A8%E5%9F%9F%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%B9%E6%A1%88.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-3637c066 data-v-386fc0cc><i class="iconfont icon-eye" style="margin-right: .5rem" data-v-3637c066></i> <a class="leancloud-visitors-count" style="font-size:.8rem;font-weight:normal;color:#999;" data-v-3637c066></a></span> <i class="iconfont icon-tag tags" data-v-386fc0cc><span class="tag-item" data-v-386fc0cc>
+			js
+		</span><span class="tag-item" data-v-386fc0cc>
+			跨域
+		</span><span class="tag-item" data-v-386fc0cc>
+			代理
+		</span></i></div></div> <div class="content" data-v-a29357e4><div class="tip custom-block"><p class="custom-block-title">前后端通信及同源策略、跨域实现的方案</p> <ol><li>同源策略</li> <li>前后端通信的几种方式</li> <li>补充的代理方案</li></ol></div> <h3 id="一、同源策略"><a href="#一、同源策略" aria-hidden="true" class="header-anchor">#</a> 一、同源策略</h3> <ol><li><p>同源策略的含义</p> <ul><li>协议相同</li> <li>域名相同</li> <li>端口相同</li></ul></li></ol> <p>以https://www.waiyuanneifang.top/index.html为例：</p> <table><thead><tr><th style="text-align:left">URL</th> <th style="text-align:left">结果</th> <th style="text-align:left">原因</th></tr></thead> <tbody><tr><td style="text-align:left">http://www.waiyuanneifang.top/index.html</td> <td style="text-align:left">失败</td> <td style="text-align:left">不同协议</td></tr> <tr><td style="text-align:left">https://www.waiyuanneifang.top:8080/index.html</td> <td style="text-align:left">失败</td> <td style="text-align:left">不同端口</td></tr> <tr><td style="text-align:left">https://www.wai.top/index.html</td> <td style="text-align:left">失败</td> <td style="text-align:left">不同域名</td></tr></tbody></table> <ol start="2"><li>同源策略的目的及限制</li></ol> <p><strong>目的：</strong> <br></p> <p>  同源策略限制从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。举个例子：比如一个恶意网站的页面通过 iframe 嵌入了银行的登录页面（二者不同源），如果没有同源限制，恶意网页上的 javascript 脚本就可以在用户登录银行的时候获取用户名和密码。</p> <p><strong>限制：</strong></p> <ol><li>页面中的链接，重定向以及表单提交不会受到同源策略限制。</li> <li>script，img，link，iframe 都可以加载跨域资源</li> <li>javascript 不能操作 Cookie、LocalStorage 和 IndexDB，无法获取 DOM，不能发送 Ajax 请求</li></ol> <h3 id="二、前后端通信的几种方式"><a href="#二、前后端通信的几种方式" aria-hidden="true" class="header-anchor">#</a> 二、前后端通信的几种方式</h3> <ol><li>Ajax(同源)</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Ajax</span> <span class="token punctuation">(</span><span class="token parameter">options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> xhr <span class="token operator">=</span> XMLHttpRequest <span class="token operator">?</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">new</span> <span class="token class-name">window<span class="token punctuation">.</span>ActiveXObject</span><span class="token punctuation">(</span><span class="token string">&quot;Microsoft&quot;</span><span class="token punctuation">)</span>
+    	<span class="token keyword">var</span> data <span class="token operator">=</span> options<span class="token punctuation">.</span>data<span class="token punctuation">,</span>
+             url <span class="token operator">=</span> options<span class="token punctuation">.</span>url<span class="token punctuation">,</span>
+             type <span class="token operator">=</span> options<span class="token punctuation">.</span>type<span class="token punctuation">,</span>
+             dataArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> k <span class="token keyword">in</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        dataArr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token string">'='</span> <span class="token operator">+</span> data<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        url <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">'?'</span> <span class="token operator">+</span> dataArr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> url<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/\?$/g</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> url<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">&quot;Content-type&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;application/x-www-form-urlencoded&quot;</span><span class="token punctuation">)</span>
+        xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>dataArr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    xhr<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">200</span> <span class="token operator">||</span> xhr<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token number">304</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> xhr<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>success <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> options<span class="token punctuation">.</span>success <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                options<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>xhr<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		 <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>error <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> options<span class="token punctuation">.</span>error <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		    options<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>xhr<span class="token punctuation">,</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><ol start="2"><li>Jsonp（跨域）：通过 script 标签可加载跨域资源实现</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">jsonp</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> callbackName<span class="token punctuation">,</span> onsuccess<span class="token punctuation">,</span> onerror<span class="token punctuation">,</span> charset</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	window<span class="token punctuation">[</span>callbackName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>onsuccess <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> onsuccess <span class="token operator">===</span> <span class="token string">&quot;function&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">onsuccess</span><span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">var</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">&quot;script&quot;</span><span class="token punctuation">)</span>
+	script<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;type&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;text/javascript&quot;</span><span class="token punctuation">)</span>
+	charset <span class="token operator">&amp;&amp;</span> script<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;charset&quot;</span><span class="token punctuation">,</span> charset<span class="token punctuation">)</span>
+	script<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">&quot;src&quot;</span><span class="token punctuation">,</span> url <span class="token operator">+</span> <span class="token string">&quot;&amp;callback=&quot;</span> <span class="token operator">+</span> callbackName<span class="token punctuation">)</span>
+	script<span class="token punctuation">.</span>onload <span class="token operator">=</span> script<span class="token punctuation">.</span><span class="token function-variable function">onreadystatechange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>script<span class="token punctuation">.</span>readyState <span class="token operator">||</span> <span class="token regex">/loading|complete/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>script<span class="token punctuation">.</span>readyState<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			script<span class="token punctuation">.</span>onload <span class="token operator">=</span> script<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> <span class="token keyword">null</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>script<span class="token punctuation">.</span>parentNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				script<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span>
+			<span class="token punctuation">}</span>
+			window<span class="token punctuation">[</span>callbackName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	script<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>onerror <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> onerror <span class="token operator">===</span> <span class="token string">&quot;function&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token function">onerror</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&quot;head&quot;</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><span style="color: red">注：jsonp 是以 get 方式请求的</span></p> <ol start="3"><li>Hash（跨域）：URL 中#后面的内容，改变不会触发页面</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 页面A中发送data</span>
+<span class="token keyword">function</span> <span class="token function">hash</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> <span class="token constant">B</span> <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">&quot;iframe&quot;</span><span class="token punctuation">)</span>
+	<span class="token constant">B</span><span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">B</span><span class="token punctuation">.</span>src <span class="token operator">+</span> <span class="token string">&quot;#&quot;</span> <span class="token operator">+</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 页面B接收数据</span>
+window<span class="token punctuation">.</span><span class="token function-variable function">onhashchange</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">var</span> data <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>hash
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="4"><li><p>WebSocket（不受同源限制）:服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，属于服务器推送技术的一种。</p> <ul><li>建立在 TCP 协议之上，服务器端的实现比较容易。</li> <li>与 HTTP 协议有着良好的兼容性。默认端口也是 80 和 443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器。</li> <li>数据格式比较轻量，性能开销小，通信高效。</li> <li>可以发送文本，也可以发送二进制数据。</li> <li>没有同源限制，客户端可以与任意服务器通信。</li> <li>协议标识符是 ws（如果加密，则为 wss），服务器网址就是 URL。</li></ul></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">&quot;wss://echo.websocket.org&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 连接成功</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;open!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 向服务器发送</span>
+ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;your message&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 接收服务器推送</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;message!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 连接关闭</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onclose</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;closed!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="5"><li>CORS（跨域资源共享）：是一个 W3C 标准，需要服务器和客户端都支持，其原理在于使用自定义的 HTTP 头部允许浏览器和服务器相互了解对方，从而决定请求是否成功，分为简单请求和非简单请求</li></ol> <p><strong>简单请求：</strong> 服务端返回后浏览器查看响应中是否包含 Access-Control-Allow-Origin，如果 Access-Control-Allow-Origin 存在并且包含了当前页面所在的域，那么浏览器将不再根据同源策略对该数据做访问限制 <br></p> <p><strong>非简单请求：</strong> 与简单请求不同。</p> <ul><li>使用了任一 PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH 为 HTTP 方法。</li> <li>人为设置了 Accept, Accept-Language,Content-Language,DPR,Downlink,Save-Data,Viewport-Width,width。</li> <li>Content-Type 为 application/x-www-form-urlencoded、multipart/form-data、text/plain 以外的值。</li> <li>请求中 XMLHttpRequesUpload 对象注册了任意多个事件监听器。</li> <li>请求中使用了 ReadableStream 对象。</li></ul> <p>  满足上面任一一条，都会先使用 OPTIONS 方法发起一个预检请求到服务器，已获知服务器是否允许该实际请求。可以避免对服务器的用户数据产生未预期的影响。</p> <div style="color: red;">注：CORS 对比 JSONP，都能解决 Ajax 直接请求普通文件存在跨域无权限访问的问题，区别在于:
+<div>1. JSONP 只能实现 GET 请求，而 CORS 支持所有类型的 HTTP 请求</div> <div>2. 使用 CORS，开发者可以使用普通的 XMLHttpRequest 发起请求和获得数据，比起 JSONP 有更好的错误处理。</div> <div>3. JSONP 主要被老的浏览器支持，它们往往不支持 CORS，而绝大多数现代浏览器都已经支持了 CORS</div></div> <p><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener noreferrer">详细看阮一峰老师的博客<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <ol start="6"><li>EventSource（服务器端推送，不支持跨域，IE 完全不支持）</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 客户端，传入接口url作为参数</span>
+<span class="token keyword">var</span> evtSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventSource</span><span class="token punctuation">(</span><span class="token string">&quot;http://localhost/api&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 监听错误</span>
+evtSource<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;error!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 监听推送消息</span>
+evtSource<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;message!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 连接打开</span>
+evtSource<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;open!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="7"><li>navigator.sendBeacon（用于通过 HTTP 异步传输少量数据到 Web 服务器）</li></ol> <p> 参数一：data 将要发送到的 url <br>
+ 参数二：发送给服务器的 ArrayBufferView, Blob, DOMString, 和 FormData 类型的数据 <br></p> <p> 在页面 unload 时，如果要上报当前数据，采用 xhr 的同步上报方式，会阻塞当前页面的跳转；使用 new Image 有可能遇到 aborted，导致无法成功发送。使用 sendBeacon 则不会存在上述问题。sendBeacon 如果成功进入浏览器的发送队列后，会返回 true；如果受到队列总数、数据大小的限制后，会返回 false。返回 ture 后，只是表示进入了发送队列，浏览器会尽力保证发送成功，但是否成功了，不会再有任何返回值。目前暂无具体的数据长度限制标准。Google Analytics 使用 sendBeacon。<br></p> <p>考虑到对目前浏览器的支持情况，需要做一下降级支持</p> <div class="language-js extra-class"><pre class="language-js"><code>navigator<span class="token punctuation">.</span>sendBeacon <span class="token operator">||</span>
+	<span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span>
+		<span class="token string">'var xhr=new XMLHttpRequest();xhr.open(&quot;POST&quot;,arguments[0],true);r.send(arguments[1]);'</span>
+	<span class="token punctuation">)</span>
+</code></pre></div><ol start="8"><li>postMessage（跨域）:H5 标准，可以和其打开的新窗口，多窗口之间，嵌套的 iframe 进行异步的数据传递。</li></ol> <p> postMessage()有两个参数。第一个是 data，因兼容性问题最好采用字符串。第二个是 origin，指明目 标窗口的源，协议+主机+端口号[+URL]，URL 会被忽略，所以可以不写，这个参数是为了安全考虑，postMessage()方法只会将 message 传递给指定窗口，当然如果愿意也可以设置为&quot;*&quot;，传递给任意窗口，如果要和当前窗口同源的话设置为&quot;/&quot;。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 在A(http://A.com)页面向B(http://B.com)发送数据</span>
+window<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;http://B.com&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 在B中监听数据改变</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>source<span class="token punctuation">)</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>origin<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="三、补充的代理方案"><a href="#三、补充的代理方案" aria-hidden="true" class="header-anchor">#</a> 三、补充的代理方案</h3> <ol><li>通过 nginx 进行反向代理</li></ol> <div class="language-js extra-class"><pre class="language-js"><code>http <span class="token punctuation">{</span>
+    include       mime<span class="token punctuation">.</span>types<span class="token punctuation">;</span>
+    default_type  application<span class="token operator">/</span>octet<span class="token operator">-</span>stream<span class="token punctuation">;</span>
+
+    sendfile        on<span class="token punctuation">;</span>
+    #tcp_nopush     on<span class="token punctuation">;</span>
+
+    #keepalive_timeout  <span class="token number">0</span><span class="token punctuation">;</span>
+    keepalive_timeout  <span class="token number">65</span><span class="token punctuation">;</span>
+
+    #gzip  on<span class="token punctuation">;</span>
+
+    server <span class="token punctuation">{</span>
+        listen       <span class="token number">80</span><span class="token punctuation">;</span>
+        server_name  localhost<span class="token punctuation">;</span>
+		location <span class="token operator">/</span> <span class="token punctuation">{</span>
+            root <span class="token constant">D</span><span class="token punctuation">:</span><span class="token operator">/</span>dist<span class="token punctuation">;</span>
+            index  index<span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+        location  <span class="token operator">~</span> <span class="token operator">^</span><span class="token punctuation">(</span><span class="token operator">/</span>api<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            # 需要代理到的地址
+            proxy_pass http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token number">.0</span><span class="token number">.1</span><span class="token punctuation">:</span><span class="token number">8021</span><span class="token punctuation">;</span>
+            add_header <span class="token string">'Access-Control-Allow-Origin'</span> <span class="token string">'*'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ol start="2"><li>WebpackDevServer 配置 proxy</li></ol> <p>  原理是 http-proxy-middleware 通过引入 node 的 http-proxy 插件起了一个小型的反向代理的服务器（类似于 nginx），把目标地址 https://www.waiyuanneifang.top 的请求做处理，先解析 Host(Header)、HTTP 信息等，然后构造出目标服务器 http 报文，请求目标服务器并收到响应。把返回的响应返回请求源。</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+	devServer<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+			<span class="token string">&quot;/api&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+				target<span class="token punctuation">:</span> <span class="token string">&quot;https://www.waiyuanneifang.top&quot;</span><span class="token punctuation">,</span>
+				pathRewrite<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token string">&quot;^/api&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><br> <p><strong>以上都是查阅资料及个人理解所整理，若有不对的地方请留言指正，谢谢！</strong></p></div> <!----> <div class="page-edit" data-v-a29357e4><!----></div> <!----> </div> <div class="valine-wrapper" data-v-9d6ad040><div id="valine" style="display:;" data-v-9d6ad040></div></div> <!----> <!----> <div class="back-to-ceiling" style="right:1rem;bottom:3rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-01105093 data-v-01105093><i class="iconfont icon-arrowup" data-v-01105093></i></div></div></div>
+    <script src="/assets/js/app.ae18e89e.js" defer></script><script src="/assets/js/20.c2a56d9e.js" defer></script>
+  </body>
+</html>
